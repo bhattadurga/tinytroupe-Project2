@@ -1,5 +1,5 @@
 **SmartFinance AI** 🤖
-Overview
+**Overview**
 SmartFinance AI is an AI-driven personal finance assistant designed to help users manage their finances, track expenses, and plan budgets. The app leverages advanced AI to analyze financial habits, predict future spending, and suggest savings strategies.
  
 **Features**
