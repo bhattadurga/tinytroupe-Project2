@@ -3,8 +3,8 @@
 SmartFinance AI is an AI-driven personal finance assistant designed to help users manage their finances, track expenses, and plan budgets. The app leverages advanced AI to analyze financial habits, predict future spending, and suggest savings strategies.
  
 ## Features
-•	Expense Tracking: Track your expenses in real-time and categorize them (e.g., groceries, rent, entertainment).
-•	Budget Planner: Set and monitor monthly budgets for various expense categories.
+- **Expense Tracking**: Track your expenses in real-time and categorize them (e.g., groceries, rent, entertainment).
+-	**Budget Planner**: Set and monitor monthly budgets for various expense categories.
 •	Expense Forecasting: AI-driven predictions based on past spending patterns.
 •	Financial Health Insights: Personalized tips on how to improve your financial health.
 •	Voice Interaction: Use voice commands to interact with your finances.
@@ -97,4 +97,4 @@ smartfinance-ai/
 •	Create a feature branch: git checkout -b feature-name
 •	Commit changes: git commit -m "Added new feature"
 •	Push to the branch: git push origin feature-name
-•	Open a Pull Request.
+•	Open a Pull Request. 
