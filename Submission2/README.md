@@ -1,8 +1,8 @@
 # SmartFinance AI  🤖
-# Over View
+## Over View
 SmartFinance AI is an AI-driven personal finance assistant designed to help users manage their finances, track expenses, and plan budgets. The app leverages advanced AI to analyze financial habits, predict future spending, and suggest savings strategies.
  
-**Features**
+## Features
 •	Expense Tracking: Track your expenses in real-time and categorize them (e.g., groceries, rent, entertainment).
 •	Budget Planner: Set and monitor monthly budgets for various expense categories.
 •	Expense Forecasting: AI-driven predictions based on past spending patterns.
@@ -11,7 +11,7 @@ SmartFinance AI is an AI-driven personal finance assistant designed to help user
 •	Multi-Currency Support: Automatically detect and convert between currencies based on your region.
 •	Investment Suggestions: AI-powered recommendations for stocks or savings plans based on risk appetite.
  
-**Tech Stack**
+## Tech Stack
 •	Frontend: Streamlit
 •	Backend: Python (Flask, Requests, Pandas, Matplotlib)
 •	AI Models: Scikit-learn, TensorFlow/Keras for financial forecasting
@@ -19,19 +19,19 @@ SmartFinance AI is an AI-driven personal finance assistant designed to help user
 •	Database: SQLite for storing user transactions
 •	Currency Conversion: Open Exchange Rates API
  
-**Installation**
-**Prerequisites**
+## Installation
+## Prerequisites
 Ensure you have the following installed:
 •	Python 3.8+
 •	Pip
 •	Virtual Environment (optional but recommended)
 
-**Steps**
-**1.	Clone the repository:**
+## Steps
+1.	Clone the repository:
 git clone https://github.com/your-repo/smartfinance-ai.git
 cd smartfinance-ai
 
-**2.	Create and activate a virtual environment:**
+## 2.	Create and activate a virtual environment:
 python -m venv venv
 source venv/bin/activate  # On macOS/Linux
 venv\Scripts\activate     # On Windows
