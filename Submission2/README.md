@@ -1,113 +1,132 @@
-# SmartFinance AI  🤖
-## Over View
-SmartFinance AI is an AI-driven personal finance assistant designed to help users manage their finances, track expenses, and plan budgets. The app leverages advanced AI to analyze financial habits, predict future spending, and suggest savings strategies.
- 
+# AutoModeler AI 🤖
+
+## Overview
+AutoModeler AI is an intelligent end-to-end chatbot application that guides users through building machine learning models based on their data and goals. It features a conversational UI that allows users to upload CSV files, describe their objectives, and receive trained models with performance insights—completely code-free. It dynamically identifies whether the task is regression or classification and handles preprocessing, evaluation, and reporting.
+
 ## Features
-- **Expense Tracking**: Track your expenses in real-time and categorize them (e.g., groceries, rent, entertainment).
--	**Budget Planner**: Set and monitor monthly budgets for various expense categories.
--	**Expense Forecasting:** AI-driven predictions based on past spending patterns.
--	**Financial Health Insights:** Personalized tips on how to improve your financial health.
--	**Voice Interaction:** Use voice commands to interact with your finances.
--	**Multi-Currency Support:** Automatically detect and convert between currencies based on your region.
--	**Investment Suggestions:** AI-powered recommendations for stocks or savings plans based on risk appetite.
- 
+- **Conversational UI:** Interact with a data science chatbot that understands your problem and guides you through modeling.
+- **Dynamic Model Recommendation:** Automatically classifies tasks (e.g., regression vs. classification) and suggests appropriate models.
+- **Model Building Pipeline:** Handles missing values, encodes categorical features, scales numerical data, and trains a suitable model.
+- **Evaluation Summary:** Outputs performance metrics including R², accuracy, confusion matrix, and p-values.
+- **AI Judge:** Evaluates model quality and offers suggestions for improvement.
+- **Downloadable Report:** Users can download a PDF report summarizing the model, performance, and visualizations.
+
 ## Tech Stack
--	**Frontend:** Streamlit
--	**Backend:** Python (Flask, Requests, Pandas, Matplotlib)
--	**AI Models:** Scikit-learn, TensorFlow/Keras for financial forecasting
--	**Voice Interaction:** Google Speech Recognition and gTTS (Text-to-Speech)
--	**Database:** SQLite for storing user transactions
--	**Currency Conversion:** Open Exchange Rates API
- 
+- **Frontend:** Streamlit (for chatbot interface and file upload)
+- **Backend:** Python 3.10, FastAPI
+- **ML Libraries:** Scikit-learn, Pandas, NumPy
+- **Visualization:** Matplotlib, Seaborn
+- **Report Generation:** ReportLab
+- **AI/LLM Integration:** OpenAI or Hugging Face for conversation interpretation
+
+**Deployment (Bonus):** AWS Lambda + API Gateway
+
 ## Installation
 ## Prerequisites
-Ensure you have the following installed:
--	Python 3.8+
--	Pip
--	Virtual Environment (optional but recommended)
+Make sure you have the following installed:
+- Python 3.10+
+- pip
+- (Optional) Virtual Environment
 
-## Steps
-1.	Clone the repository:
-   ```sh
-   git clone https://github.com/your-repo/smartfinance-ai.git
-   cd smartfinance-ai
-   ```
-2.	Create and activate a virtual environment:
-   ```sh
-   python -m venv venv
-   source venv/bin/activate  # On macOS/Linux
-   venv\Scripts\activate     # On Windows
-   ```
-3.	Install dependencies:
-   ```sh
-   pip install -r requirements.txt
-   ```
+### Steps
+1.Clone the repository:
+  ```sh
+  git clone https://github.com/your-repo/automodeler-ai.git
+  cd automodeler-ai
+  ```
+2.Create and activate a virtual environment:
+  ```sh
+  python -m venv venv
+  source venv/bin/activate  # On macOS/Linux
+  venv\Scripts\activate     # On Windows
+  ```
+3.Install dependencies:
+  ```sh
+  pip install -r requirements.txt
+  ```
+4.Running AutoModeler AI
+  Launch the application by running:
+  ```sh
+  streamlit run app.py
+  ```
 
-4.	Set up Streamlit:
-   ```sh
-   streamlit run app.py
-   ```
- 
 ## Configuration
-Modify your financial parameters in app.py under the sidebar section:
+Adjust these parameters in `app.py` sidebar to customize behavior:
 ```python
-monthly_budget = st.number_input("📊 Monthly Budget", value=1000, step=100, min_value=500, max_value=5000)
-currency_code = st.text_input("💱 Currency Code", value="USD")
-forecast_months = st.slider("⏳ Forecasting Period", 1, 12, 6)
-```
- 
-## Usage
-## Running SmartFinance AI
-Launch the application by running:
-```sh
-streamlit run app.py
+model_type = st.selectbox("Choose Model Type", ["Auto", "Regression", "Classification"])
+api_base_url = st.text_input("API URL", value="http://localhost:8000")
+enable_ai_judge = st.checkbox("Enable AI Judge", value=True)
 ```
 
-## Performing Financial Tasks
-1.	Track Expenses:
-Enter your daily transactions in the input form.
-2.	Set Budgets:
-Define monthly limits for different categories (e.g., food, rent, entertainment).
-3.	View AI Insights:
-Get monthly summaries, insights on spending habits, and recommendations for saving.
-4.	Investment Suggestions:
-View AI-generated recommendations for investment or saving options based on risk appetite.
-5.	Voice Interaction:
-Activate voice mode and interact with the app by saying commands like “show me my expenses for this week.”
- 
+## Usage
+## User Journey
+**Scenario 1 (Regression):**
+1.User: “I want to predict housing prices.”
+AutoModeler: “That sounds like a continuous variable. Would you like to use linear regression?”
+→ Backend trains a linear regression model and returns R² and coefficients.
+
+**Scenario 2 (Classification):**
+2.User: “I want to classify housing prices into 'low', 'medium', 'high'.”
+AutoModeler: “Great, I’ll bin the target variable and apply logistic regression. Shall we proceed?”
+→ Backend bins the target and trains logistic regression, returning a confusion matrix and accuracy.
+
 ## Code Structure
 ```
-smartfinance-ai/
+automodeler-ai/
+│── api/
+│   └── model_api.py          # FastAPI endpoints for model training and evaluation
+│── core/
+│   └── trainer.py            # Preprocessing and training logic
+│   └── judge.py              # Evaluation and metrics generation
+│── utils/
+│   └── plotter.py            # Visualization functions
+│── frontend/
+│   └── app.py                # Streamlit application
 │── models/
-│   │── finance_model.h5        # Keras model for expense forecasting
-│   │── scaler.pkl              # Scaler for financial data normalization
-│── app.py                      # Main application script
-│── helper.py                   # Functions for financial analysis, forecasting, and voice interaction
-│── output.mp3                  # Text-to-Speech output
-│── data/
-│   │── transactions.csv        # User transaction data (sample)
-│   │── currency_rates.json     # Exchange rates data
-│── requirements.txt            # Dependencies
-│── README.md                   # Documentation
+│   └── saved_model.pkl       # Serialized model
+│── requirements.txt          # Python dependencies
+│── README.md                 # Project documentation
 ```
- 
+
 ## API and AI Integration
--	**Scikit-learn Model:** Predicts future expenses and suggests budgets.
--	**TensorFlow Keras Model:** Forecasts future spending trends based on user history.
--	**Google Speech Recognition:** Allows users to speak commands and interact with the app.
--	**Google Text-to-Speech (gTTS):** Converts financial insights and recommendations into speech.
--	**Open Exchange Rates API:** Provides real-time currency conversion.
- 
+- **POST /train_model:** Accepts a CSV dataset and model type, then returns the trained model and metrics.
+
+- **POST /predict:** Accepts new input data and returns predictions using the saved model.
+
+- **POST /judge:** Evaluates the trained model (accuracy, R², confusion matrix, etc.).
+
+**Sample FastAPI Endpoint:**
+python
+@app.post("/train_model")
+def train_model(file: UploadFile, model_type: str):
+    ...
+LLM Support: Uses OpenAI/HuggingFace models to parse user intent and classify tasks as regression or classification.
+
+Custom Rule Engine: Detects data types and selects modeling approaches in fallback scenarios.
+
+## AWS Deployment (Optional)
+You can deploy the FastAPI backend using:
+1.Frameworks: serverless, zappa
+2.Cloud Tools: AWS Lambda, API Gateway, boto3
+3.Testing Tools: Postman, cURL for verifying endpoints
+
 ## Troubleshooting
-•	Voice Commands Not Working: Ensure that your microphone is properly set up and accessible.
-•	AI Predictions Taking Too Long: Try reducing the data set or optimizing the model’s inference time.
- 
+Streamlit fails to load:
+```sh
+pip install streamlit --upgrade
+```
+FastAPI not running:
+
+
+uvicorn api.model_api:app --reload
+CORS issues (for frontend-backend communication): Add CORSMiddleware in model_api.py.
+
 ## Contribution
-1.	Fork the repository.
-2.	Create a feature branch (`git checkout -b feature-name').
-3.	Commit changes (`git commit -m "Added new feature`).
-4.	Push to the branch {`git push origin feature-name`).
-5.	Open a Pull Request. 
+1.Fork the repository.
+2.Create a feature branch (`git checkout -b feature-name`).
+3.Commit your changes (`git commit -m "Add new feature"`).
+4.Push to GitHub (`git push origin feature-name`).
+5.Submit a Pull Request.
 
 ## Contact
-For queries or contributions, reach out at: vb46901n@pace.edu
+For questions or contributions, reach out to: vb46901n@pace.edu
