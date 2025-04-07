@@ -96,13 +96,14 @@ automodeler-ai/
 - **POST /judge:** Evaluates the trained model (accuracy, R², confusion matrix, etc.).
 
 **Sample FastAPI Endpoint:**
-python
+```sh
 @app.post("/train_model")
 def train_model(file: UploadFile, model_type: str):
     ...
-LLM Support: Uses OpenAI/HuggingFace models to parse user intent and classify tasks as regression or classification.
+```
+**LLM Support:** Uses OpenAI/HuggingFace models to parse user intent and classify tasks as regression or classification.
 
-Custom Rule Engine: Detects data types and selects modeling approaches in fallback scenarios.
+**Custom Rule Engine:** Detects data types and selects modeling approaches in fallback scenarios.
 
 ## AWS Deployment (Optional)
 You can deploy the FastAPI backend using:
@@ -111,15 +112,15 @@ You can deploy the FastAPI backend using:
 3.Testing Tools: Postman, cURL for verifying endpoints
 
 ## Troubleshooting
-Streamlit fails to load:
-```sh
-pip install streamlit --upgrade
-```
-FastAPI not running:
-
-
-uvicorn api.model_api:app --reload
-CORS issues (for frontend-backend communication): Add CORSMiddleware in model_api.py.
+- Streamlit fails to load:
+  ```sh
+  pip install streamlit --upgrade
+  ```
+  FastAPI not running:
+  ```sh
+  uvicorn api.model_api:app --reload
+  CORS issues (for frontend-backend communication): Add CORSMiddleware in model_api.py.
+  ```
 
 ## Contribution
 1.Fork the repository.
