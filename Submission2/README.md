@@ -123,8 +123,8 @@ You can deploy the FastAPI backend using:
   ```
 
 ## Contribution
-  1.Fork the repository.
-  2.Create a feature branch (`git checkout -b feature-name`).
+- Fork the repository.
+- Create a feature branch (`git checkout -b feature-name`).
   3.Commit your changes (`git commit -m "Add new feature"`).
   4.Push to GitHub (`git push origin feature-name`).
   5.Submit a Pull Request.
