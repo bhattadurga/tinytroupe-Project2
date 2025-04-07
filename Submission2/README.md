@@ -107,9 +107,9 @@ def train_model(file: UploadFile, model_type: str):
 
 ## AWS Deployment (Optional)
 You can deploy the FastAPI backend using:
-1.Frameworks: serverless, zappa
-2.Cloud Tools: AWS Lambda, API Gateway, boto3
-3.Testing Tools: Postman, cURL for verifying endpoints
+- Frameworks: serverless, zappa
+- Cloud Tools: AWS Lambda, API Gateway, boto3
+- Testing Tools: Postman, cURL for verifying endpoints
 
 ## Troubleshooting
 - Streamlit fails to load:
@@ -125,9 +125,9 @@ You can deploy the FastAPI backend using:
 ## Contribution
 - Fork the repository.
 - Create a feature branch (`git checkout -b feature-name`).
-  3.Commit your changes (`git commit -m "Add new feature"`).
-  4.Push to GitHub (`git push origin feature-name`).
-  5.Submit a Pull Request.
+- Commit your changes (`git commit -m "Add new feature"`).
+- Push to GitHub (`git push origin feature-name`).
+- Submit a Pull Request.
 
 ## Contact
 For questions or contributions, reach out to: vb46901n@pace.edu
