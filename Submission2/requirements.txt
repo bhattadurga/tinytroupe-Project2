@@ -1,0 +1,10 @@
+streamlit
+fastapi
+scikit-learn
+pandas
+numpy
+matplotlib
+seaborn
+uvicorn
+reportlab
+openai  # or transformers if using HuggingFace
