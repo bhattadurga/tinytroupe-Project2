@@ -73,17 +73,13 @@ AutoModeler: “Great, I’ll bin the target variable and apply logistic regress
 ## Code Structure
 ```
 automodeler-ai/
-│── api/
-│   └── model_api.py          # FastAPI endpoints for model training and evaluation
-│── core/
-│   └── trainer.py            # Preprocessing and training logic
-│   └── judge.py              # Evaluation and metrics generation
-│── utils/
-│   └── plotter.py            # Visualization functions
-│── frontend/
-│   └── app.py                # Streamlit application
-│── models/
-│   └── saved_model.pkl       # Serialized model
+
+│── model_api.py              # FastAPI endpoints for model training and evaluation
+│── trainer.py                # Preprocessing and training logic
+│── judge.py                  # Evaluation and metrics generation
+│── plotter.py                # Visualization functions
+│── app.py                    # Streamlit application
+│── saved_model.pkl           # Serialized model
 │── requirements.txt          # Python dependencies
 │── README.md                 # Project documentation
 ```
