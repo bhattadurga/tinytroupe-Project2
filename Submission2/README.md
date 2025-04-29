@@ -1,23 +1,24 @@
 # AutoModeler AI 🤖
 
 ## Overview
-AutoModeler AI is an intelligent end-to-end chatbot application that guides users through building machine learning models based on their data and goals. It features a conversational UI that allows users to upload CSV files, describe their objectives, and receive trained models with performance insights—completely code-free. It dynamically identifies whether the task is regression or classification and handles preprocessing, evaluation, and reporting.
+AutoModeler AI is an intelligent end-to-end chatbot application that guides users through uploading datasets, training machine learning models, evaluating them and building machine learning models based on their data and goals.It features a simple UI for CSV upload, task description, model building, feature importance visualization, and model download.
+It supports dynamic model selection between regression and classification tasks, feature engineering, retraining, and judging model quality — all integrated into a seamless pipeline powered by Streamlit + FastAPI.
 
 ## Features
-- **Conversational UI:** Interact with a data science chatbot that understands your problem and guides you through modeling.
-- **Dynamic Model Recommendation:** Automatically classifies tasks (e.g., regression vs. classification) and suggests appropriate models.
-- **Model Building Pipeline:** Handles missing values, encodes categorical features, scales numerical data, and trains a suitable model.
-- **Evaluation Summary:** Outputs performance metrics including R², accuracy, confusion matrix, and p-values.
-- **AI Judge:** Evaluates model quality and offers suggestions for improvement.
-- **Downloadable Report:** Users can download a PDF report summarizing the model, performance, and visualizations.
+- **Conversational UI** : Friendly Streamlit app guides users through model training.
+- **Dynamic Model Type Selection**: Automatically suggests Regression, Classification, or Boosting.
+- **Model Building Pipeline**: Cleans data, engineers new features, and trains machine learning models.
+- **Evaluation Summary**: Outputs performance metrics like R², MSE, MAE, Adjusted R².
+- **AI Judge**: Evaluates trained models and provides suggestions.
+- **Feature Visualization**: Displays feature importance using beautiful charts.
+- **Model Download**: Download trained models (.pkl) and feature weights (CSV).
 
 ## Tech Stack
-- **Frontend:** Streamlit (for chatbot interface and file upload)
-- **Backend:** Python 3.10, FastAPI
-- **ML Libraries:** Scikit-learn, Pandas, NumPy
-- **Visualization:** Matplotlib, Seaborn
-- **Report Generation:** ReportLab
-- **AI/LLM Integration:** OpenAI or Hugging Face for conversation interpretation
+- **Frontend**: Streamlit (for user interface)
+- **Backend**: FastAPI (Python 3)
+- **ML Libraries**: Scikit-learn, Pandas, NumPy
+- **Visualization**: Matplotlib, Seaborn
+- **Model Persistence**: joblib
 
 **Deployment (Bonus):** AWS Lambda + API Gateway
 
@@ -31,24 +32,31 @@ Make sure you have the following installed:
 ### Steps
 1.Clone the repository:
   ```sh
-  git clone https://github.com/your-repo/automodeler-ai.git
-  cd automodeler-ai
+  git clone https://github.com/bhattadurga/Projects/tree/main/Algo-DS-FinalProject/AutoModeler-AI
+  cd AutoModeler-AI
   ```
 2.Create and activate a virtual environment:
   ```sh
   python -m venv venv
-  source venv/bin/activate  # On macOS/Linux
-  venv\Scripts\activate     # On Windows
+  source venv/bin/activate  # macOS/Linux
+  venv\Scripts\activate     # Windows
   ```
 3.Install dependencies:
   ```sh
   pip install -r requirements.txt
   ```
-4.Running AutoModeler AI
+4. Running the Application
+   Start the FastAPI Backend - This runs the backend server on: http://localhost:8000
+   ```sh
+   uvicorn model_api:app --host 0.0.0.0 --port 8000 --reload
+   ```  
+5.Running AutoModeler AI
+  Start the Streamlit Frontend - This opens the frontend on: http://localhost:8501
   Launch the application by running:
   ```sh
   streamlit run app.py
   ```
+Now you can upload your CSV file, select model types, and train!
 
 ## Configuration
 Adjust these parameters in `app.py` sidebar to customize behavior:
@@ -72,24 +80,30 @@ AutoModeler: “Great, I’ll bin the target variable and apply logistic regress
 
 ## Code Structure
 ```
-automodeler-ai/
+AutoModeler-AI/
 
-│── model_api.py              # FastAPI endpoints for model training and evaluation
-│── trainer.py                # Preprocessing and training logic
-│── judge.py                  # Evaluation and metrics generation
-│── plotter.py                # Visualization functions
-│── app.py                    # Streamlit application
-│── saved_model.pkl           # Serialized model
-│── requirements.txt          # Python dependencies
-│── README.md                 # Project documentation
+│── app.py                  # Streamlit frontend app
+│── model_api.py            # FastAPI backend server
+│── trainer.py              # Model training logic
+│── judge.py                # Model judging logic
+│── plot_utils.py           # Feature importance plotting
+│── utils/                  # (optional helpers)
+│── requirements.txt        # Required dependencies
+│── saved_model.pkl         # Generated after training
+│── README.md               # Project documentation
+
 ```
 
 ## API and AI Integration
-- **POST /train_model:** Accepts a CSV dataset and model type, then returns the trained model and metrics.
 
-- **POST /predict:** Accepts new input data and returns predictions using the saved model.
+- **POST /train_model**: Train and return metrics.
 
-- **POST /judge:** Evaluates the trained model (accuracy, R², confusion matrix, etc.).
+- **POST /judge**: Evaluate model and return scoring.
+
+- Initially, saved_model.pkl will not exist.
+It will be automatically created after the first model training.
+
+- All model files and weights can be downloaded through the Streamlit app.
 
 **Sample FastAPI Endpoint:**
 ```sh
@@ -97,9 +111,6 @@ automodeler-ai/
 def train_model(file: UploadFile, model_type: str):
     ...
 ```
-**LLM Support:** Uses OpenAI/HuggingFace models to parse user intent and classify tasks as regression or classification.
-
-**Custom Rule Engine:** Detects data types and selects modeling approaches in fallback scenarios.
 
 ## AWS Deployment (Optional)
 You can deploy the FastAPI backend using:
